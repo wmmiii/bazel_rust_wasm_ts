@@ -1,0 +1,4 @@
+bazel-*
+/my_ts/node_modules
+/my_wasm_lib/cargo/target
+/my_wasm_lib/cargo/vendor

@@ -1,0 +1,29 @@
+[package]
+name = "my_wasm_lib"
+version = "0.1.0"
+authors = ["William Martin <williammartinthird@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "../src/lib.rs"
+
+[dependencies]
+wasm-bindgen = "=0.2.67"
+web-sys = { version = "0.3.44", features = ["console"] }
+
+[raze]
+# The WORKSPACE relative path to the Cargo.toml working directory.
+workspace_path = "//my_wasm_lib/cargo"
+# target = "x86_64-unknown-linux-musl"
+target = "wasm32-unknown-unknown"
+genmode = "Remote"
+gen_workspace_prefix = "my_wasm_lib"
+
+# [raze.crates.web-sys.'0.3.44']
+# gen_buildrs = true
+
+[raze.crates.proc-macro2.'1.0.19']
+additional_flags = [
+    "--cfg=use_proc_macro",
+]
